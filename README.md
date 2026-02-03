@@ -4,6 +4,10 @@ In this project we will follow a course about NestJS, on Udemy!
 
 Anything related to NestJS, we can go to the [Official Documentation](https://docs.nestjs.com/)
 
+Note: to skip adding a git repo nested inside the current repo, just create a new NestJs project like this:
+
+- `nest new <project_name> --skip-git`
+
 ## 1. Creating a Project
 
 We can create a project like this: `npm nest new <project_name>`
