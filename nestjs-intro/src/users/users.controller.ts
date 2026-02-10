@@ -1,41 +1,36 @@
 import {
-    Body,
-    Controller,
-    Delete,
-    Get,
-    Headers,
-    Ip,
-    Param,
-    ParseIntPipe,
-    Post,
-    Query,
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Headers,
+  Ip,
+  Param,
+  ParseIntPipe,
+  Post,
+  Query,
 } from '@nestjs/common';
 
 @Controller('users')
 export class UsersController {
-  //this is a GET request in NestJS, we use the @Get() decorator to classify it as a GET request
   @Get(':id')
   public getUsers(
+    //ParseIntPipe is a pipe that will parse the int value of the query parameter
     @Param('id', ParseIntPipe) id: number | undefined,
-    @Param('optional') optional?: number,
-    @Query('limit', ParseIntPipe) limit?: number,
+    @Query('limit', ParseIntPipe) limit?: any,
   ) {
+    console.log(id);
     console.log(limit);
-    console.log(optional);
-    if (optional) {
-      return `ID is ${id} and optional parameter is ${optional}`;
-    } else {
-      return `ID is ${id} and no optional parameter`;
-    }
+
+    return `The user ${id} has a limit of ${limit}`;
   }
 
   @Post()
   public createUsers(
     @Body() body: any,
     @Headers() headers: any,
-    @Ip() ip: any, //Ip can give us the ip of the sender
+    @Ip() ip: any,
   ) {
-    //here we can use the Body decorator, where we can extract the body of a request
     console.log(body);
     console.log(headers);
     console.log(ip);
